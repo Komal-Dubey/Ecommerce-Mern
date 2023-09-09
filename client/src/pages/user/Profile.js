@@ -12,14 +12,22 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [country,setCountry] = useState("")
+  const [state,setState] = useState("")
+  const [city,setCity] = useState("")
   const [address, setAddress] = useState("");
 
   //get user data
   useEffect(() => {
-    const { email, name, phone, address } = auth?.user;
+    const { email, name, phone,country,
+      state,
+      city, address } = auth?.user;
     setName(name);
     setPhone(phone);
     setEmail(email);
+    setCountry(country);
+    setState(state);
+    setCity(city);
     setAddress(address);
   }, [auth?.user]);
 
@@ -32,6 +40,9 @@ const Profile = () => {
         email,
         password,
         phone,
+        country,
+        state,
+        city,
         address,
       });
       if (data?.errro) {
@@ -102,6 +113,37 @@ const Profile = () => {
                     placeholder="Enter Your Phone"
                   />
                 </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    placeholder="Enter Your Phone"
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    placeholder="Enter Your Phone"
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    className="form-control"
+                    id="exampleInputEmail1"
+                    placeholder="Enter Your Phone"
+                  />
+                </div>
+              
                 <div className="mb-3">
                   <input
                     type="text"
